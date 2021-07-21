@@ -30,4 +30,24 @@ namespace bn {
     }
     return ss.str();
   }
+
+  Number& Number::operator++() {
+    for(auto it = data_.rbegin(); it != data_.rend() - 1; ++it) {
+      if(*it == 'C') {
+        if(it == (data_.rend() - 2)) {
+          throw std::runtime_error("Value too large");
+        }
+        *it = '0';
+        continue;
+      }
+      if(*it == '9') {
+        *it = 'A';
+        break;
+      }
+
+      ++(*it);
+      break;
+    }
+    return *this;
+  }
 } // namespace bn
