@@ -2,7 +2,27 @@
 #include <cstring>
 #include <sstream>
 #include <stdexcept>
+#include <unordered_map>
 #include "numbers.h"
+
+namespace {
+
+std::unordered_map<char, unsigned> decimalValues{
+  {'0',0},
+  {'1',1},
+  {'2',2},
+  {'3',3},
+  {'4',4},
+  {'5',5},
+  {'6',6},
+  {'7',7},
+  {'8',8},
+  {'9',9},
+  {'A',10},
+  {'B',11},
+  {'C',12}};
+
+} // anon ns
 
 namespace bn {
 
@@ -77,6 +97,29 @@ namespace bn {
     }
 
     return true;
+  }
+
+  unsigned Number::sum(size_t begin, size_t end) const {
+    if(begin > (data_.size() - 1) || end > (data_.size() - 1) || begin > end) {
+      throw std::runtime_error("Invalid boundaries");
+    }
+    unsigned res = 0;
+    for(size_t i = begin; i <= end; ++i) {
+      res += decimalValues[data_[i]];
+    }
+    return res;
+  }
+
+  unsigned Number::leftSum() const {
+    return sum(0, 5);
+  }
+
+  unsigned Number::rightSum() const {
+    return sum(7, 12);
+  }
+
+  bool Number::isBeautiful() const {
+    return leftSum() == rightSum();
   }
 
 } // namespace bn
