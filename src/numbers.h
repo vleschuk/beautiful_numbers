@@ -13,6 +13,7 @@ public:
   ~Number() = default;
 
   bool operator==(const char *) const;
+  bool operator!=(const char *) const;
   Number& operator++();
   
   bool isBeautiful() const;

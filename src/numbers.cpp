@@ -99,6 +99,10 @@ namespace bn {
     return true;
   }
 
+  bool Number::operator!=(const char *str) const {
+    return !(*this == str);
+  }
+
   unsigned Number::sum(size_t begin, size_t end) const {
     if(begin > (data_.size() - 1) || end > (data_.size() - 1) || begin > end) {
       throw std::runtime_error("Invalid boundaries");
