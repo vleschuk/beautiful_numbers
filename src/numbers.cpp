@@ -22,4 +22,12 @@ namespace bn {
       data_[i] = c;
     }
   }
+
+  std::string Number::toString() const {
+    std::stringstream ss;
+    for(auto c : data_) {
+      ss << c;
+    }
+    return ss.str();
+  }
 } // namespace bn

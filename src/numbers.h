@@ -8,7 +8,7 @@ namespace bn {
 class Number {
 public:
   explicit Number(const char * /* len must be 12 */);
-  Number(Number &);
+  Number(Number &) = default;
   Number &operator=(Number &) = delete;
   ~Number() = default;
 
