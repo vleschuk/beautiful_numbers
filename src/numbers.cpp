@@ -50,4 +50,25 @@ namespace bn {
     }
     return *this;
   }
+
+  bool Number::operator==(const char *str) const {
+    if(!str) {
+      return false;
+    }
+
+    size_t len = strlen(str);
+    if(len != data_.size()) {
+      return false;
+    }
+
+    for(size_t i = 0; i < data_.size(); ++i) {
+      char c = static_cast<char>(std::toupper(static_cast<int>(str[i])));
+      if(data_[i] != c) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
 } // namespace bn
