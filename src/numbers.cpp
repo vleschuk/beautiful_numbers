@@ -44,6 +44,14 @@ namespace bn {
         *it = 'A';
         break;
       }
+      else if(*it == 'A') {
+        *it = 'B';
+        break;
+      }
+      else if(*it == 'B') {
+        *it = 'C';
+        break;
+      }
 
       ++(*it);
       break;
