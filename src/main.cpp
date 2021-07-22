@@ -3,7 +3,7 @@
 #include "numbers.h"
 
 int main() {
-  unsigned count = 1; // all zeros
+  unsigned long count = 1; // all zeros
   try {
     bn::Number n("000000000000");
     do {
